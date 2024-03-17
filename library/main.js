@@ -1,11 +1,13 @@
 import * as THREE from './three.module.js';
 import { OrbitControls } from './OrbitControls.js';
 import { ColladaLoader } from './ColladaLoader.js';
-import {GLTFLoader} from './GLTFLoader.js'
+import {GLTFLoader} from './GLTFLoader.js';
+import { EffectComposer } from './EffectComposer.js';
+import { RenderPass } from './RenderPass.js';
+import { UnrealBloomPass } from './UnrealBloomPass.js';
 
 // Scene
 const scene = new THREE.Scene();
-
 // Camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(0, 50, 70); // Adjusted camera position
@@ -16,6 +18,28 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor('#87CEEB'); // Sets the background color to blue (hexadecimal value)
 document.body.appendChild(renderer.domElement);
+
+const composer = new EffectComposer(renderer); // Use EffectComposer from imported module
+const renderPass = new RenderPass(scene, camera);
+composer.addPass(renderPass);
+
+// Set up bloom effect with custom parameters
+const bloomParams = {
+    exposure: 1,       // Controls the exposure of the bloom effect
+    bloomStrength: 1, // Controls the strength of the bloom effect
+    bloomThreshold: 0, // Controls the luminance threshold for the bloom effect
+    bloomRadius: 0.5,  // Controls the size of the bloom effect
+};
+
+const bloomPass = new THREE.UnrealBloomPass (
+    new THREE.Vector2(window.innerWidth, window.innerHeight),
+    bloomParams.exposure,
+    bloomParams.bloomStrength,
+    bloomParams.bloomThreshold,
+    bloomParams.bloomRadius
+);
+composer.addPass(bloomPass);
+
 
 // Orbit Controls
 const cameraControl = new OrbitControls(camera, renderer.domElement);
@@ -148,7 +172,7 @@ gltfLoader3.load(
     './assets/3d/scene.gltf',
     (gltf) => {
         const model8 = gltf.scene;
-        model8.position.set(-100, 0, -20);
+        model8.position.set(-70, 0, -40);
 
         // Resize GLTF model
         const desiredScale = 0.1; // Adjust scale factor as needed
@@ -343,6 +367,86 @@ coalMesh.castShadow = true;
 coalMesh.receiveShadow = true;
 scene.add(coalMesh);
 
+// Create particle material with emissive property
+const particleTexture = new THREE.TextureLoader().load('./assets/images/star.png');
+const particleMaterial = new THREE.PointsMaterial({
+    size: 2,
+    map: particleTexture,
+    transparent: true,
+    blending: THREE.AdditiveBlending, // Additive blending for glowing effect
+    emissive: new THREE.Color(0xffffff), // Use THREE.Color object for emissive color
+    emissiveIntensity: 1, // Adjust the intensity of emission
+});
+
+// Create particle system geometry and mesh
+const particleGeometry = new THREE.BufferGeometry(); // Use BufferGeometry instead of Geometry
+
+// Define the initial positions for the particles
+const numParticles = 1000; // Adjust as needed
+const positions = new Float32Array(numParticles * 3); // Each particle has x, y, z coordinates
+
+for (let i = 0; i < numParticles; i++) {
+    const index = i * 3;
+    // Set initial positions randomly within a certain range
+    positions[index] = Math.random() * 200 - 100; // x position
+    positions[index + 1] = Math.random() * 200 - 100; // y position
+    positions[index + 2] = Math.random() * 200 - 100; // z position
+}
+
+
+
+// Define velocities array to store particle velocities
+const velocities = [];
+
+// Initialize particle velocities
+for (let i = 0; i < numParticles; i++) {
+    // Random velocities in each direction
+    const velocityX = Math.random() * 0.2 - 0.1;
+    const velocityY = Math.random() * 0.2 - 0.1;
+    const velocityZ = Math.random() * 0.2 - 0.1;
+    
+    velocities.push(velocityX, velocityY, velocityZ);
+}
+
+// Add the positions to the geometry as an attribute
+particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+// Create particle system mesh
+const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+scene.add(particleSystem);
+
+// Define a function for animation
+function animateParticles() {
+    const positionsAttribute = particleGeometry.getAttribute('position'); // Get the position attribute
+
+    // Update particle positions based on their velocities
+    for (let i = 0; i < numParticles; i++) {
+        const index = i * 3;
+        positionsAttribute.array[index] += velocities[index]; // Update x position
+        positionsAttribute.array[index + 1] += velocities[index + 1]; // Update y position
+        positionsAttribute.array[index + 2] += velocities[index + 2]; // Update z position
+
+        // Reset positions if particles go out of bounds (optional)
+        if (positionsAttribute.array[index] > 100 || positionsAttribute.array[index] < -100) {
+            positionsAttribute.array[index] = Math.random() * 200 - 100;
+        }
+        if (positionsAttribute.array[index + 1] > 100 || positionsAttribute.array[index + 1] < -100) {
+            positionsAttribute.array[index + 1] = Math.random() * 200 - 100;
+        }
+        if (positionsAttribute.array[index + 2] > 100 || positionsAttribute.array[index + 2] < -100) {
+            positionsAttribute.array[index + 2] = Math.random() * 200 - 100;
+        }
+    }
+
+    positionsAttribute.needsUpdate = true; // Signal that the attribute values are updated
+
+    renderer.render(scene, camera); // Render the scene
+
+    requestAnimationFrame(animateParticles); // Request the next animation frame
+}
+
+// Start the particle animation
+animateParticles();
 
 
 // Mouse Control
