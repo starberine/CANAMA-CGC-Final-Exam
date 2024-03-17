@@ -20,13 +20,31 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor('#87CEEB'); // Sets the background color to blue (hexadecimal value)
 document.body.appendChild(renderer.domElement);
 
+
 const composer = new EffectComposer(renderer); // Use EffectComposer from imported module
 const renderPass = new RenderPass(scene, camera);
 composer.addPass(renderPass);
 
-const bloomPass = new THREE.UnrealBloomPass(10,10,10,10);
+// Create UnrealBloomPass with initial parameters
+const bloomParams = {
+    exposure: 1,       // Controls the exposure of the bloom effect
+    bloomStrength: 1, // Controls the initial strength of the bloom effect
+    bloomThreshold: 0, // Controls the luminance threshold for the bloom effect
+    bloomRadius: 1,  // Controls the size of the bloom effect
+};
+
+const bloomPass = new UnrealBloomPass(
+    new THREE.Vector2(window.innerWidth, window.innerHeight),
+    bloomParams.bloomStrength,
+    bloomParams.bloomRadius,
+    bloomParams.bloomThreshold
+);
+
+// Add the bloom pass to the composer
 composer.addPass(bloomPass);
 
+// Later in your code, you can adjust the bloom strength as needed
+bloomPass.strength = 100; // Set the bloom strength to 2 (increase intensity)
 
 // Orbit Controls
 const cameraControl = new OrbitControls(camera, renderer.domElement);
@@ -98,6 +116,274 @@ colladaLoader.load(
         console.error('Error loading Collada model:', error);
     }
 );
+
+//weeds
+const colladaLoader2 = new ColladaLoader();
+colladaLoader2.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(15, 0, -5);
+        const desiredScale = 1;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader3 = new ColladaLoader();
+colladaLoader3.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(45, 0, -5);
+        const desiredScale = 1;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader4 = new ColladaLoader();
+colladaLoader4.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(60, 0, 50);
+        const desiredScale = 2;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader5 = new ColladaLoader();
+colladaLoader5.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(80, 0, 50);
+        const desiredScale = 2;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader6 = new ColladaLoader();
+colladaLoader6.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(100, 0, 50);
+        const desiredScale = 2;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader7 = new ColladaLoader();
+colladaLoader7.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(100, 0, 40);
+        const desiredScale = 2;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader8 = new ColladaLoader();
+colladaLoader8.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(80, 0, 40);
+        const desiredScale = 2;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader9 = new ColladaLoader();
+colladaLoader9.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(60, 0, 40);
+        const desiredScale = 2;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader10 = new ColladaLoader();
+colladaLoader10.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(60, 0, 30);
+        const desiredScale = 2;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader11 = new ColladaLoader();
+colladaLoader11.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(80, 0, 30);
+        const desiredScale = 2;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader12 = new ColladaLoader();
+colladaLoader12.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(100, 0, 30);
+        const desiredScale = 2;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader13 = new ColladaLoader();
+colladaLoader13.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(60, 0, 20);
+        const desiredScale = 2;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader14 = new ColladaLoader();
+colladaLoader14.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(80, 0, 20);
+        const desiredScale = 2;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
+const colladaLoader15 = new ColladaLoader();
+colladaLoader15.load(
+    './assets/3d/Spring Weeds/PltWeedSpr3.dae',
+    (collada) => {
+        const model = collada.scene;
+        model.position.set(100, 0, 20);
+        const desiredScale = 2;
+        model.scale.set(desiredScale, desiredScale, desiredScale);
+        enableShadowCasting(model); // Enable shadow casting for the model
+        scene.add(model);
+    },
+    (xhr) => {
+        console.log('Collada model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading Collada model:', error);
+    }
+);
+
 // Load House model
 const gltfLoader = new GLTFLoader();
 gltfLoader.load(
@@ -126,6 +412,57 @@ gltfLoader.load(
     }
 );
 
+const gltfLoader5 = new GLTFLoader();
+gltfLoader5.load(
+    './assets/3d/House/scene.gltf',
+    (gltf) => {
+        const model3 = gltf.scene;
+        model3.position.set(-90, 0, 0);
+
+        // Resize GLTF model
+        const desiredScale = 0.15; // Adjust scale factor as needed
+        model3.scale.set(desiredScale, desiredScale, desiredScale);
+
+        model3.traverse((child) => {
+            if (child.isMesh) {
+                child.castShadow = true;
+            }
+        });
+        scene.add(model3);
+    },
+    (xhr) => {
+        console.log('GLTF model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading GLTF model:', error);
+    }
+);
+
+const gltfLoader6 = new GLTFLoader();
+gltfLoader6.load(
+    './assets/3d/House/scene.gltf',
+    (gltf) => {
+        const model3 = gltf.scene;
+        model3.position.set(-90, 0, 40);
+
+        // Resize GLTF model
+        const desiredScale = 0.15; // Adjust scale factor as needed
+        model3.scale.set(desiredScale, desiredScale, desiredScale);
+
+        model3.traverse((child) => {
+            if (child.isMesh) {
+                child.castShadow = true;
+            }
+        });
+        scene.add(model3);
+    },
+    (xhr) => {
+        console.log('GLTF model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading GLTF model:', error);
+    }
+);
 
 // Load apple tree model
 const gltfLoader2 = new GLTFLoader();
@@ -180,6 +517,135 @@ gltfLoader3.load(
     }
 );
 
+const gltfLoader4 = new GLTFLoader();
+gltfLoader4.load(
+    './assets/3d/scene.gltf',
+    (gltf) => {
+        const model9 = gltf.scene;
+        model9.position.set(0, 0, -40);
+
+        // Resize GLTF model
+        const desiredScale = 0.1; // Adjust scale factor as needed
+        model9.scale.set(desiredScale, desiredScale, desiredScale);
+
+        model9.traverse((child) => {
+            if (child.isMesh) {
+                child.castShadow = true;
+            }
+        });
+        scene.add(model9);
+    },
+    (xhr) => {
+        console.log('GLTF model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading GLTF model:', error);
+    }
+);
+
+const gltfLoader7 = new GLTFLoader();
+gltfLoader7.load(
+    './assets/3d/scene.gltf',
+    (gltf) => {
+        const model9 = gltf.scene;
+        model9.position.set(120, 0, -40);
+
+        // Resize GLTF model
+        const desiredScale = 0.1; // Adjust scale factor as needed
+        model9.scale.set(desiredScale, desiredScale, desiredScale);
+
+        model9.traverse((child) => {
+            if (child.isMesh) {
+                child.castShadow = true;
+            }
+        });
+        scene.add(model9);
+    },
+    (xhr) => {
+        console.log('GLTF model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading GLTF model:', error);
+    }
+);
+
+const gltfLoader8 = new GLTFLoader();
+gltfLoader8.load(
+    './assets/3d/scene.gltf',
+    (gltf) => {
+        const model9 = gltf.scene;
+        model9.position.set(70, 0, -40);
+
+        // Resize GLTF model
+        const desiredScale = 0.1; // Adjust scale factor as needed
+        model9.scale.set(desiredScale, desiredScale, desiredScale);
+
+        model9.traverse((child) => {
+            if (child.isMesh) {
+                child.castShadow = true;
+            }
+        });
+        scene.add(model9);
+    },
+    (xhr) => {
+        console.log('GLTF model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading GLTF model:', error);
+    }
+);
+
+const gltfLoader9 = new GLTFLoader();
+gltfLoader9.load(
+    './assets/3d/scene.gltf',
+    (gltf) => {
+        const model9 = gltf.scene;
+        model9.position.set(90, 0, -10);
+
+        // Resize GLTF model
+        const desiredScale = 0.1; // Adjust scale factor as needed
+        model9.scale.set(desiredScale, desiredScale, desiredScale);
+
+        model9.traverse((child) => {
+            if (child.isMesh) {
+                child.castShadow = true;
+            }
+        });
+        scene.add(model9);
+    },
+    (xhr) => {
+        console.log('GLTF model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading GLTF model:', error);
+    }
+);
+
+const gltfLoader10 = new GLTFLoader();
+gltfLoader10.load(
+    './assets/3d/scene.gltf',
+    (gltf) => {
+        const model9 = gltf.scene;
+        model9.position.set(140, 0, -10);
+
+        // Resize GLTF model
+        const desiredScale = 0.1; // Adjust scale factor as needed
+        model9.scale.set(desiredScale, desiredScale, desiredScale);
+
+        model9.traverse((child) => {
+            if (child.isMesh) {
+                child.castShadow = true;
+            }
+        });
+        scene.add(model9);
+    },
+    (xhr) => {
+        console.log('GLTF model ' + (xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('Error loading GLTF model:', error);
+    }
+);
 
 //textures
     //grass
@@ -201,6 +667,11 @@ const rockMaterial = new THREE.MeshStandardMaterial({ map: rockTexture });
 const coalTextureLoader = new THREE.TextureLoader();
 const coalTexture = rockTextureLoader.load('./assets/textures/coal.jpg'); // Adjust the path to your texture
 const coalMaterial = new THREE.MeshStandardMaterial({ map: coalTexture });
+
+    //fire
+const fireTextureLoader = new THREE.TextureLoader();
+const fireTexture = fireTextureLoader.load('./assets/textures/lava.jpg'); // Adjust the path to your texture
+const fireMaterial = new THREE.MeshStandardMaterial({ map: fireTexture });
 
 // Create island 1
 const geometry1 = new THREE.BoxGeometry(350, 5, 120);
@@ -354,15 +825,53 @@ coalMesh.castShadow = true;
 coalMesh.receiveShadow = true;
 scene.add(coalMesh);
 
+//fire
+const sphereGeometry = new THREE.SphereGeometry(5, 9, 5);
+const fireMesh = new THREE.Mesh(sphereGeometry, fireMaterial); // Red color for the sphere, orange emissive for fire-like effect
+fireMesh.position.set(-25,-1, 18);
+fireMesh.castShadow = true;
+fireMesh.receiveShadow = true;
+scene.add(fireMesh);
+
+// Add a light to the scene (e.g., point light or directional light)
+const light = new THREE.PointLight(0xffa500, 1000, 1000); // Orange light
+light.position.set(-25, 5, 18); // Position the light at the center of the fire sphere
+scene.add(light);
+
+//PATH
+const pathGeometry = new THREE.PlaneGeometry(13, 83);
+const pathMesh = new THREE.Mesh(pathGeometry, material2);
+pathMesh.position.set(30, 0, 18);
+pathMesh.rotation.x = -Math.PI / 2; // Rotate by -90 degrees around the X axis
+pathMesh.castShadow = true;
+pathMesh.receiveShadow = true;
+scene.add(pathMesh);
+
+const pathGeometry1 = new THREE.PlaneGeometry(120, 13);
+const pathMesh1 = new THREE.Mesh(pathGeometry1, material2);
+pathMesh1.position.set(-35, 0, 0);
+pathMesh1.rotation.x = -Math.PI / 2; // Rotate by -90 degrees around the X axis
+pathMesh1.castShadow = true;
+pathMesh1.receiveShadow = true;
+scene.add(pathMesh1);
+
+const pathGeometry2 = new THREE.PlaneGeometry(120, 13);
+const pathMesh2 = new THREE.Mesh(pathGeometry2, material2);
+pathMesh2.position.set(-35, 0, 40);
+pathMesh2.rotation.x = -Math.PI / 2; // Rotate by -90 degrees around the X axis
+pathMesh2.castShadow = true;
+pathMesh2.receiveShadow = true;
+scene.add(pathMesh2);
+
 // Create particle material with emissive property
 const particleTexture = new THREE.TextureLoader().load('./assets/images/star.png');
 const particleMaterial = new THREE.PointsMaterial({
-    size: 2,
+    size: 1,
     map: particleTexture,
     transparent: true,
-    blending: THREE.AdditiveBlending, // Additive blending for glowing effect
-    emissive: new THREE.Color(0xffffff), // Use THREE.Color object for emissive color
-    emissiveIntensity: 1, // Adjust the intensity of emission
+    blending: THREE.AdditiveBlending,
+    color: 0xffffff, // Use color instead of emissive
+    intensity: 10000,    // Use intensity instead of emissiveIntensity
 });
 
 // Create particle system geometry and mesh
