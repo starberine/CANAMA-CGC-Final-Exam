@@ -83,8 +83,8 @@ pointLight.shadow.camera.near = 5;
 pointLight.shadow.camera.far = 200;
 
 // Create a helper for the point light's position
-const pointLightHelper = new THREE.PointLightHelper(pointLight, 1);
-scene.add(pointLightHelper);
+//const pointLightHelper = new THREE.PointLightHelper(pointLight, 1);
+//scene.add(pointLightHelper);
 
 
 // Traverse through the models and enable shadow casting for meshes
