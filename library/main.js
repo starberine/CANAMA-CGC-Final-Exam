@@ -3,8 +3,9 @@ import { OrbitControls } from './OrbitControls.js';
 import { ColladaLoader } from './ColladaLoader.js';
 import {GLTFLoader} from './GLTFLoader.js';
 import { EffectComposer } from './EffectComposer.js';
-import { RenderPass } from './RenderPass.js';
 import { UnrealBloomPass } from './UnrealBloomPass.js';
+import { RenderPass } from './RenderPass.js';
+
 
 // Scene
 const scene = new THREE.Scene();
@@ -23,21 +24,7 @@ const composer = new EffectComposer(renderer); // Use EffectComposer from import
 const renderPass = new RenderPass(scene, camera);
 composer.addPass(renderPass);
 
-// Set up bloom effect with custom parameters
-const bloomParams = {
-    exposure: 1,       // Controls the exposure of the bloom effect
-    bloomStrength: 1, // Controls the strength of the bloom effect
-    bloomThreshold: 0, // Controls the luminance threshold for the bloom effect
-    bloomRadius: 0.5,  // Controls the size of the bloom effect
-};
-
-const bloomPass = new THREE.UnrealBloomPass (
-    new THREE.Vector2(window.innerWidth, window.innerHeight),
-    bloomParams.exposure,
-    bloomParams.bloomStrength,
-    bloomParams.bloomThreshold,
-    bloomParams.bloomRadius
-);
+const bloomPass = new THREE.UnrealBloomPass(10,10,10,10);
 composer.addPass(bloomPass);
 
 
