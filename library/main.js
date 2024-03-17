@@ -200,52 +200,130 @@ const rockMaterial = new THREE.MeshStandardMaterial({ map: rockTexture });
 
 const rockGeometry = new THREE.SphereGeometry(2, 32, 32); // radius, widthSegments, heightSegments
 const rockMesh = new THREE.Mesh(rockGeometry, rockMaterial);
-rockMesh.position.set(-20, 0, 0);
+rockMesh.position.set(-20, -1, 10);
 rockMesh.castShadow = true; // Enable shadow casting for the mesh
 rockMesh.receiveShadow = true;
+
 const rockGeometry2 = new THREE.SphereGeometry(2, 30, 32); // radius, widthSegments, heightSegments
 const rockMesh2 = new THREE.Mesh(rockGeometry2, rockMaterial);
-rockMesh2.position.set(-22, -1, 0);
+rockMesh2.position.set(-22, -1, 10);
 rockMesh2.castShadow = true; // Enable shadow casting for the mesh
+rockMesh2.receiveShadow = true;
 
 const rockGeometry3 = new THREE.SphereGeometry(3, 30, 32); // radius, widthSegments, heightSegments
 const rockMesh3 = new THREE.Mesh(rockGeometry3, rockMaterial);
-rockMesh3.position.set(-26, -1, 0);
+rockMesh3.position.set(-26, -1, 10);
 rockMesh3.castShadow = true; // Enable shadow casting for the mesh
+rockMesh3.receiveShadow = true;
 
 const rockGeometry4 = new THREE.SphereGeometry(2, 30, 32); // radius, widthSegments, heightSegments
 const rockMesh4 = new THREE.Mesh(rockGeometry4, rockMaterial);
-rockMesh4.position.set(-30, -1, 2);
+rockMesh4.position.set(-30, -1, 12);
 rockMesh4.castShadow = true; // Enable shadow casting for the mesh
+rockMesh4.receiveShadow = true;
 
 const rockGeometry5 = new THREE.SphereGeometry(1, 30, 32); // radius, widthSegments, heightSegments
 const rockMesh5 = new THREE.Mesh(rockGeometry5, rockMaterial);
-rockMesh5.position.set(-32, -1, 3);
+rockMesh5.position.set(-32, -1, 13);
 rockMesh5.castShadow = true; // Enable shadow casting for the mesh
+rockMesh5.receiveShadow = true;
 
 const rockGeometry6 = new THREE.SphereGeometry(1, 30, 32); // radius, widthSegments, heightSegments
 const rockMesh6 = new THREE.Mesh(rockGeometry6, rockMaterial);
-rockMesh6.position.set(-33, -1, 4);
+rockMesh6.position.set(-33, -1, 14);
 rockMesh6.castShadow = true; // Enable shadow casting for the mesh
+rockMesh6.receiveShadow = true;
 
 const rockGeometry7 = new THREE.SphereGeometry(2, 30, 32); // radius, widthSegments, heightSegments
 const rockMesh7 = new THREE.Mesh(rockGeometry7, rockMaterial);
-rockMesh7.position.set(-34, -1, 2);
+rockMesh7.position.set(-34, -1, 12);
 rockMesh7.castShadow = true; // Enable shadow casting for the mesh
+rockMesh7.receiveShadow = true;
 
 const rockGeometry8 = new THREE.SphereGeometry(2, 30, 32); // radius, widthSegments, heightSegments
 const rockMesh8 = new THREE.Mesh(rockGeometry8, rockMaterial);
-rockMesh8.position.set(-36, -1, 3);
+rockMesh8.position.set(-35, -1, 15);
 rockMesh8.castShadow = true; // Enable shadow casting for the mesh
+rockMesh8.receiveShadow = true;
 
 const rockGeometry9 = new THREE.SphereGeometry(2, 30, 32); // radius, widthSegments, heightSegments
 const rockMesh9 = new THREE.Mesh(rockGeometry9, rockMaterial);
-rockMesh9.position.set(-38, -1, 4);
+rockMesh9.position.set(-30, -1, 14);
 rockMesh9.castShadow = true; // Enable shadow casting for the mesh
+rockMesh9.receiveShadow = true;
 
+const rockGeometry10 = new THREE.SphereGeometry(3, 30, 32); // radius, widthSegments, heightSegments
+const rockMesh10 = new THREE.Mesh(rockGeometry10, rockMaterial);
+rockMesh10.position.set(-34, -1, 17);
+rockMesh10.castShadow = true; // Enable shadow casting for the mesh
+rockMesh10.receiveShadow = true;
 
+const rockGeometry11 = new THREE.SphereGeometry(2, 30, 32); // radius, widthSegments, heightSegments
+const rockMesh11 = new THREE.Mesh(rockGeometry11, rockMaterial);
+rockMesh11.position.set(-33, -1, 20);
+rockMesh11.castShadow = true; // Enable shadow casting for the mesh
+rockMesh11.receiveShadow = true;
 
-scene.add(rockMesh, rockMesh2, rockMesh3, rockMesh4, rockMesh5, rockMesh6, rockMesh7, rockMesh8, rockMesh9);
+const rockGeometry12 = new THREE.SphereGeometry(2, 30, 32); // radius, widthSegments, heightSegments
+const rockMesh12 = new THREE.Mesh(rockGeometry12, rockMaterial);
+rockMesh12.position.set(-33, -1, 22);
+rockMesh12.castShadow = true; // Enable shadow casting for the mesh
+rockMesh12.receiveShadow = true;
+
+const rockGeometry13 = new THREE.SphereGeometry(2, 30, 32); // radius, widthSegments, heightSegments
+const rockMesh13 = new THREE.Mesh(rockGeometry13, rockMaterial);
+rockMesh13.position.set(-30, -1, 24);
+rockMesh13.castShadow = true; // Enable shadow casting for the mesh
+rockMesh13.receiveShadow = true;
+
+const rockGeometry14 = new THREE.SphereGeometry(3, 30, 32); // radius, widthSegments, heightSegments
+const rockMesh14 = new THREE.Mesh(rockGeometry14, rockMaterial);
+rockMesh14.position.set(-27, -1, 24);
+rockMesh14.castShadow = true; // Enable shadow casting for the mesh
+rockMesh14.receiveShadow = true;
+
+const rockGeometry15 = new THREE.SphereGeometry(1, 30, 32); // radius, widthSegments, heightSegments
+const rockMesh15 = new THREE.Mesh(rockGeometry15, rockMaterial);
+rockMesh15.position.set(-24, -1, 23);
+rockMesh15.castShadow = true; // Enable shadow casting for the mesh
+rockMesh15.receiveShadow = true;
+
+const rockGeometry16 = new THREE.SphereGeometry(1, 30, 32); // radius, widthSegments, heightSegments
+const rockMesh16 = new THREE.Mesh(rockGeometry16, rockMaterial);
+rockMesh16.position.set(-23, -1, 24);
+rockMesh16.castShadow = true; // Enable shadow casting for the mesh
+rockMesh16.receiveShadow = true;
+
+const rockGeometry17 = new THREE.SphereGeometry(2, 30, 32); // radius, widthSegments, heightSegments
+const rockMesh17 = new THREE.Mesh(rockGeometry17, rockMaterial);
+rockMesh17.position.set(-20, -1, 24);
+rockMesh17.castShadow = true; // Enable shadow casting for the mesh
+rockMesh17.receiveShadow = true;
+
+const rockGeometry18 = new THREE.SphereGeometry(2, 30, 32); // radius, widthSegments, heightSegments
+const rockMesh18 = new THREE.Mesh(rockGeometry18, rockMaterial);
+rockMesh18.position.set(-17, -1, 23);
+rockMesh18.castShadow = true; // Enable shadow casting for the mesh
+rockMesh18.receiveShadow = true;
+
+const rockGeometry19 = new THREE.SphereGeometry(2.5, 30, 32); // radius, widthSegments, heightSegments
+const rockMesh19 = new THREE.Mesh(rockGeometry19, rockMaterial);
+rockMesh19.position.set(-15, -1, 20);
+rockMesh19.castShadow = true; // Enable shadow casting for the mesh
+rockMesh19.receiveShadow = true;
+
+const rockGeometry20 = new THREE.SphereGeometry(2.5, 30, 32); // radius, widthSegments, heightSegments
+const rockMesh20 = new THREE.Mesh(rockGeometry20, rockMaterial);
+rockMesh20.position.set(-15, -1, 18);
+rockMesh20.castShadow = true; // Enable shadow casting for the mesh
+rockMesh20.receiveShadow = true;
+
+const rockGeometry21 = new THREE.SphereGeometry(4, 30, 32); // radius, widthSegments, heightSegments
+const rockMesh21 = new THREE.Mesh(rockGeometry21, rockMaterial);
+rockMesh21.position.set(-16, -1, 13);
+rockMesh21.castShadow = true; // Enable shadow casting for the mesh
+rockMesh21.receiveShadow = true;
+scene.add(rockMesh, rockMesh2, rockMesh3, rockMesh4, rockMesh5, rockMesh6, rockMesh7, rockMesh8, rockMesh9, rockMesh10, rockMesh11, rockMesh12,rockMesh13, rockMesh14, rockMesh15, rockMesh16, rockMesh17, rockMesh18, rockMesh19, rockMesh20, rockMesh21);
 
 
 // Mouse Control
